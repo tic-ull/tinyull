@@ -1,0 +1,2 @@
+module TinyullsHelper
+end

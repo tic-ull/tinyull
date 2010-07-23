@@ -1,0 +1,16 @@
+
+<dir style="text-align: center;">
+<% form_for(@tinyull) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.text_field :longurl %>
+  </p>
+  <p>
+    <%= f.submit 'Crear enlace corto' %>
+  </p>
+<% end %>
+
+<h2>Sólo URLs de la Universidad de La Laguna</h2>
+
+</div>

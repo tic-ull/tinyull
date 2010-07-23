@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html lang="es-ES">
+<head>    
+<%= stylesheet_link_tag 'style' %>
+
+  
+<title>Universidad de La Laguna - TinyULL</title></head>
+
+<body class="login">
+
+
+<div id="baselogin"> 
+  <div id="contenidologin"> 
+    <div id="logo">
+<a href="http://t.ull.es" target=""><img src="/images/tiny2.png" alt="TinyULL" width="200" border="0" title="" /></a></div>
+    <div id="formulario"> 
+      <h1>Servicio de enlaces cortos<br />
+      </h1>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div id="content">
+          <p style="color: green"><%= flash[:notice] %></p>
+          <%= yield %>
+      </div>
+      <p>&nbsp;</p>
+    </div>
+  </div>
+  <div id="rightlogin"></div>
+  <div id="bottomlogin"></div>
+</div>
+
+
+</body>
+</html>

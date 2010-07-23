@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Shorturl</th>
+    <th>Longurl</th>
+  </tr>
+
+<% @tinyulls.each do |tinyull| %>
+  <tr>
+    <td><%=h tinyull.shorturl %></td>
+    <td><%=h tinyull.longurl %></td>
+    <td><%= link_to 'Destroy', tinyull, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+<%= link_to 'Crear otro enlace', tinyulls_path %>

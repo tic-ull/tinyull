@@ -1,0 +1,24 @@
+
+<div style="text-align: center;">
+<p>
+  <b>URL original:</b>
+  <% if (@tinyull.longurl =~ /^(http|https)/).nil? %>
+    <%= link_to  @tinyull.longurl, "http://"+@tinyull.longurl %>
+  <% else  %>
+    <%= link_to  @tinyull.longurl, @tinyull.longurl %>
+  <% end %>
+</p>
+
+
+<p>
+  <b>URL corta:</b>
+  <% @final_url = "t.ull.es/"+@tinyull.shorturl %>
+  <%= text_field "enlace", "name", "size" => 15, "value" => @final_url %>
+</p>
+
+<%= link_to 'Crear otra URL', tinyulls_path %> 
+
+<%= render :partial => "shared/social" %>
+
+
+</div>

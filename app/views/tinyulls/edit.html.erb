@@ -1,0 +1,20 @@
+<h1>Editing tinyull</h1>
+
+<% form_for(@tinyull) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :shorturl %><br />
+    <%= f.text_field :shorturl %>
+  </p>
+  <p>
+    <%= f.label :longurl %><br />
+    <%= f.text_field :longurl %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @tinyull %> |
+<%= link_to 'Back', tinyulls_path %>
