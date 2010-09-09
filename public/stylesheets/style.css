@@ -49,7 +49,7 @@ a {
 	-webkit-transition-duration: 5s;
 	-o-transition-duration: 5s;
 	transition-duration: 5s;
-	opacity: 1;
+	opacity: 0.9;
 }
 
 
@@ -72,9 +72,9 @@ input#tinyull_submit {
 
 #listado {
 	height: 250px; 
+	width: 500px;
 	text-align: center;
 	margin-left: 300px;
-	width: 100%; 
 	overflow: auto; 
 	padding: 8px;
 }

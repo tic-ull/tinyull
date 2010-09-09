@@ -41,8 +41,11 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/url/*longurl' , :controller => 'tinyull', :action => 'create' 
-  map.connect ':controller/list/all' , :controller => 'tinyull', :action => 'list' 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  map.connect 'url/*longurl' , :controller => 'tinyulls', :action => 'create' 
+  #map.connect ':controller/url/*longurl' , :controller => 'tinyull', :action => 'create' 
+  map.connect 'list/all' , :controller => 'tinyulls', :action => 'list' 
+  #map.connect ':controller/list/all' , :controller => 'tinyull', :action => 'list' 
+  map.connect ':id' , :controller => 'tinyulls' , :action => 'show'
+  #map.connect ':controller/:action/:id'
+  #map.connect ':controller/:action/:id.:format'
 end

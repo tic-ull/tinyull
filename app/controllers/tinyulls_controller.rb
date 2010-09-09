@@ -17,7 +17,7 @@ class TinyullsController < ApplicationController
   def show
     @tinyull = Tinyull.find_by_shorturl(params[:id])
     if @tinyull.blank? 
-      redirect_to tinyulls_path
+      redirect_to root_path
     else 
       if !params[:redirect].nil? && !params[:redirect].empty? && params[:redirect] == "no"
         respond_to do |format|
@@ -54,7 +54,7 @@ class TinyullsController < ApplicationController
   elsif !params[:tinyull][:longurl].nil? && !params[:tinyull][:longurl].empty?
     @longurl = params[:tinyull][:longurl]
   else
-    redirect_to (tinyulls_path) and return
+    redirect_to (root_path) and return
   end
   if !@longurl.nil? && !(@longurl =~ /https?:\/\//)
     @longurl = "http://"+@longurl
@@ -75,7 +75,7 @@ class TinyullsController < ApplicationController
           end
         end
       else
-        redirect_to (tinyulls_path) and return
+        redirect_to (root_path) and return
       end
     else
       @tinyull = @search[0]
