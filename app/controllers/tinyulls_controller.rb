@@ -67,7 +67,7 @@ class TinyullsController < ApplicationController
         @tinyull.shorturl = @shorturl
         if @tinyull.save
           if !params[:out].nil? && !params[:out].empty? 
-            render :text => "t.ull.es/"+@tinyull.shorturl
+            render :text => "t.osl.ull.es/"+@tinyull.shorturl
           else
             respond_to do |format|
               format.html { render :action => "show", :id => Tinyull.id}
@@ -80,7 +80,7 @@ class TinyullsController < ApplicationController
     else
       @tinyull = @search[0]
       if !params[:out].nil? && !params[:out].empty?
-        render :text => "t.ull.es/"+@search[0].shorturl
+        render :text => "t.osl.ull.es/"+@search[0].shorturl
       else
         respond_to do |format|
           format.html { render :action => "show", :id => @search[0].id}
