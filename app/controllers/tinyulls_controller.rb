@@ -75,7 +75,11 @@ class TinyullsController < ApplicationController
           end
         end
       else
-        redirect_to (root_path) and return
+        if !params[:out].nil? && !params[:out].empty?
+          render :text => ""
+        else
+          redirect_to (root_path) and return
+        end
       end
     else
       @tinyull = @search[0]
