@@ -8,7 +8,7 @@
 <% @tinyulls.each do |tinyull| %>
   <tr>
     <td><%=h tinyull.shorturl %></td>
-    <td><%=h tinyull.longurl %></td>
+    <td><%= link_to tinyull.longurl, tinyull.longurl, :popup => 'true' %></td>
 <!--    <td><#%= link_to 'Destroy', tinyull, :confirm => 'Are you sure?', :method => :delete %></td> -->
   </tr>
 <% end %>

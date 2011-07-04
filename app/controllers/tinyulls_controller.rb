@@ -54,7 +54,7 @@ class TinyullsController < ApplicationController
   elsif !params[:tinyull][:longurl].nil? && !params[:tinyull][:longurl].empty?
     @longurl = params[:tinyull][:longurl]
   else
-    redirect_to (root_path) and return
+    redirect_to(root_path) and return
   end
   if !@longurl.nil? && !(@longurl =~ /https?:\/\//)
     @longurl = "http://"+@longurl
@@ -67,7 +67,7 @@ class TinyullsController < ApplicationController
         @tinyull.shorturl = @shorturl
         if @tinyull.save
           if !params[:out].nil? && !params[:out].empty? 
-            render :text => "t.osl.ull.es/"+@tinyull.shorturl
+            render :text => $domain + "/" + @tinyull.shorturl
           else
             respond_to do |format|
               format.html { render :action => "show", :id => Tinyull.id}
@@ -78,13 +78,13 @@ class TinyullsController < ApplicationController
         if !params[:out].nil? && !params[:out].empty?
           render :text => ""
         else
-          redirect_to (root_path) and return
+          redirect_to(root_path) and return
         end
       end
     else
       @tinyull = @search[0]
       if !params[:out].nil? && !params[:out].empty?
-        render :text => "t.osl.ull.es/"+@search[0].shorturl
+        render :text => $domain + "/" + @search[0].shorturl
       else
         respond_to do |format|
           format.html { render :action => "show", :id => @search[0].id}

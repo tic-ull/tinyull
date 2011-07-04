@@ -2,13 +2,25 @@
 <% @url_app = url_for(:only_path => false) %>
 <% @url_app = @url_app.gsub('%20', '_') %>
 
-
 <p> 
-<%= link_to image_tag("fb.png"), "http://www.facebook.com/share.php?u=#{@final_url}" %>
-<%= link_to image_tag("twitter.png"), "http://twitter.com/home?status=#{@final_url}" %>
-<%= link_to image_tag("identica.png"), "http://identi.ca/index.php?action=newnotice&status_textarea=#{@final_url}" %> 
-<%= link_to image_tag("buzz.png"), "http://www.google.com/buzz/post?url=#{@final_url}" %>
-<%= link_to image_tag("ff.png"), "http://friendfeed.com/?url=#{@final_url}" %>
-<%= link_to image_tag("delicious.png"), "http://del.icio.us/post?url=#{@final_url}" %>
-<%= link_to image_tag("linkedin2.png"), "http://www.linkedin.com/shareArticle?mini=true&url=#{@final_url}" %>
+  <%= link_to (image_tag "fb.png", :alt => "Facebook"), 
+	"http://www.facebook.com/share.php?u=#{@final_url}", :title => "Facebook", :popup => true %>
+
+  <%= link_to (image_tag "twitter.png", :alt => "Twitter"), 
+	"http://twitter.com/home?status=#{@final_url}", :title => "Twitter", :popup => true %>
+
+  <%= link_to (image_tag "identica.png", :alt => "Identi.ca"), 
+	"http://identi.ca/index.php?action=newnotice&status_textarea=#{@final_url}", :title => "Identi.ca", :popup => true %> 
+
+  <%= link_to (image_tag "buzz.png", :alt => "Buzz"), 
+	"http://www.google.com/buzz/post?url=#{@final_url}", :title => "Buzz", :popup => true %>
+
+  <%= link_to (image_tag "ff.png", :alt => "FriendFeed"), 
+	"http://friendfeed.com/?url=#{@final_url}", :title => "FriendFeed", :popup => true %>
+
+  <%= link_to (image_tag "delicious.png", :alt => "Delicious"), 
+	"http://del.icio.us/post?url=#{@final_url}", :title => "Delicious", :popup => true %>
+
+  <%= link_to (image_tag "linkedin2.png", :alt => "LinkedIn"), 
+	"http://www.linkedin.com/shareArticle?mini=true&url=#{@final_url}", :title => "LinkedIn", :popup => true %>
 </p>

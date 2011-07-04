@@ -3,16 +3,16 @@
 <p>
   <b>URL original:</b>
   <% if (@tinyull.longurl =~ /^(http|https)/).nil? %>
-    <%= link_to  @tinyull.longurl, "http://"+@tinyull.longurl %>
+    <%= link_to @tinyull.longurl, "http://"+@tinyull.longurl, :popup => 'true' %>
   <% else  %>
-    <%= link_to  @tinyull.longurl, @tinyull.longurl %>
+    <%= link_to  @tinyull.longurl, @tinyull.longurl, :popup => 'true' %>
   <% end %>
 </p>
 
 
 <p>
   <b>URL corta:</b>
-  <% @final_url = "t.ull.es/"+@tinyull.shorturl %>
+  <% @final_url = $domain + "/" +  @tinyull.shorturl %>
   <%= text_field "enlace", "name", "size" => 15, "value" => @final_url %>
 </p>
 
