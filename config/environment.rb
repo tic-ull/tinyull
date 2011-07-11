@@ -20,6 +20,11 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
 
+  config.action_controller.session = {
+    :session_key => '_tinyULL_session',
+    :secret      => 'b75c30c171b99e7a794366a58f4ac6aab90dfd93ad6446401c10923161f69e4c52007c28a4ebc9cd3603ba88aec3f3dcc59d3608cf2971333cba8af58a85ff37'
+  }
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
