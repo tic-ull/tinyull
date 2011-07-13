@@ -1,19 +1,23 @@
 <div id="listado">
-<table>
-  <tr>
-    <th>URL Corto</th>
-    <th>URL Completo</th>
-  </tr>
+<% if @tinyulls.nil? or @tinyulls.empty? %>
+  <b>No se han creado URLs</b>
+<% else %>
+  <p align="left"><b>Total URLs creadas: <%= @tinyulls.count %></b></p>
+  <table>
+    <tr>
+      <th>URL Corto</th>
+      <th>URL Completo</th>
+    </tr>
 
-<% @tinyulls.each do |tinyull| %>
-  <tr>
-    <td><%=h tinyull.shorturl %></td>
-    <td><%= link_to tinyull.longurl, tinyull.longurl, :popup => 'true' %></td>
-<!--    <td><#%= link_to 'Destroy', tinyull, :confirm => 'Are you sure?', :method => :delete %></td> -->
-  </tr>
+    <% @tinyulls.each do |tinyull| %>
+      <tr>
+        <td><%=h tinyull.shorturl %></td>
+        <td><%= link_to tinyull.longurl, tinyull.longurl, :popup => 'true' %></td>
+        <!-- <td><#%= link_to 'Destroy', tinyull, :confirm => 'Are you sure?', :method => :delete %></td> -->
+      </tr>
+    <% end %>
+  </table>
+  <!--<br/>
+  <#%= link_to 'Crear otro enlace', tinyulls_path %>-->
 <% end %>
-</table>
-
-<!--<br/>
-<#%= link_to 'Crear otro enlace', tinyulls_path %>-->
 </div>
