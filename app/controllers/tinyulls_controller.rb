@@ -42,24 +42,26 @@ class TinyullsController < ApplicationController
   # POST /tinyulls
   # POST /tinyulls.xml
   def create
-  if !params[:longurl].nil? && !params[:longurl].empty?
-    @longurl_tmp = params[:longurl]
-    @longurl_tmp.each do |tmp|
-      if @longurl.nil?
-        @longurl = tmp
-      else
-        @longurl += "/"+tmp 
+    if !params[:longurl].nil? && !params[:longurl].empty?
+      @longurl_tmp = params[:longurl]
+      @longurl_tmp.each do |tmp|
+        if @longurl.nil?
+          @longurl = tmp
+        else
+          @longurl += "/"+tmp 
+        end
       end
+    elsif !params[:tinyull][:longurl].nil? && !params[:tinyull][:longurl].empty?
+      @longurl = params[:tinyull][:longurl]
+    else
+      redirect_to(root_path) and return
     end
-  elsif !params[:tinyull][:longurl].nil? && !params[:tinyull][:longurl].empty?
-    @longurl = params[:tinyull][:longurl]
-  else
-    redirect_to(root_path) and return
-  end
-  if !@longurl.nil? && !(@longurl =~ /https?:\/\//)
-    @longurl = "http://"+@longurl
-  end
-  @search = Tinyull.find_by_sql(['select * from tinyulls where longurl LIKE ? ', "#{@longurl}"]);
+
+    if !@longurl.nil? && !(@longurl =~ /https?:\/\//)
+      @longurl = "http://"+@longurl
+    end
+
+    @search = Tinyull.find(:all, :conditions => ['longurl LIKE ?', "#{@longurl}"]);
     if @search.empty?
       @tinyull = Tinyull.new(:longurl => @longurl)
       if @tinyull.save
