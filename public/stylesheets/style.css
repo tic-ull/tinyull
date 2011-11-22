@@ -96,6 +96,11 @@ h2 {
 	color: lightgray;
 }
 
+span.pie {
+	display: inline-block;
+	vertical-align: middle;
+}
+
 .pie>a {
 	text-decoration: none;
 	color: lightgray;

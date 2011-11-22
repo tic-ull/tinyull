@@ -24,21 +24,29 @@
   </div>
 </div>
 
-<p class="pie"><%= link_to 'Desarrollado', 'http://www.eduardonacimiento.com', :popup => 'true' %> por la <%= link_to 'Oficina de Software Libre de la Universidad de la Laguna', 'http://osl.ull.es', :popup => 'true' %>
-<br />
-Licenciado bajo <%= link_to 'AGPLv3', 'http://www.gnu.org/licenses/agpl-3.0.html', :popup => 'true' %>, se puede <%= link_to 'descargar libremente', 'http://gitorious.org/mencey/tinyull', :popup => 'true' %></p>
+<p class="pie">
+  <%= link_to (image_tag "OSL.png", :border => "0", :align => "middle"), 'http://osl.ull.es/', 
+	:title => "Oficina de Software Libre de la Universidad de La Laguna", :popup => true %>
+  <span class="pie">
+    Desarrollado por la <%= link_to 'Oficina de Software Libre de la Universidad de La Laguna', 'http://osl.ull.es', :popup => 'true' %><br>
+    Licenciado bajo <%= link_to 'AGPLv3', 'http://www.gnu.org/licenses/agpl-3.0.html', :popup => 'true' %>, se puede 
+	<%= link_to 'descargar libremente', 'http://gitorious.org/mencey/tinyull', :popup => 'true' %>
+  </span>
+</p>
 
 <!-- Piwik -->
 <script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://webstats.osl.ull.es/" : "http://webstats.osl.ull.es/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 11);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://webstats.osl.ull.es/piwik.php?idsite=11" style="border:0" alt="" /></p></noscript>
+  var pkBaseURL = (("https:" == document.location.protocol) ? "https://webstats.osl.ull.es/" : "http://webstats.osl.ull.es/");
+  document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 11);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+  } catch( err ) {}
+</script>
+<noscript><p><img src="http://webstats.osl.ull.es/piwik.php?idsite=11" style="border:0" alt="" /></p></noscript>
 <!-- End Piwik Tracking Tag -->
 
 </body>
