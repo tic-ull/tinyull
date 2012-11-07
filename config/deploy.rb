@@ -6,7 +6,7 @@ set :application, 'tinyULL'
 set :applicationdir, "/var/rails/#{application}"
 
 set :scm, :git
-set :repository, "https://git.gitorious.org/mencey/tinyull.git"
+set :repository, "https://github.com/stic-ull/tinyull.git"
 set :branch, "master"
 
 role :web, "railsapps1.osl.ull.es"                          # Your HTTP server, Apache/etc
