@@ -1,0 +1,115 @@
+/*
+
+	# Copyright (C) 2017 Eduardo Nacimiento García <enacimie@ull.edu.es>
+	This file is part of TinyULL.
+
+    TinyULL is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    TinyULL is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+	
+*/
+
+
+
+body {
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif; 
+	font-size:13px; 
+	color: #333333;
+	background-color: #333333;
+	background-image: url('/images/background.png');
+	background-position: center 120px;
+	background-repeat: no-repeat;
+	padding: 0px;
+	margin: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#contenido  {
+	width: 100%; 
+	height: 100%; 
+	margin: 0 auto; 
+}
+
+
+
+#centro {
+	margin: 0 auto;
+	margin-top: 120px;
+	border-radius: 10px 10px 10px;
+	width: 800px;
+	height: 490px;
+	padding: 20px;
+	background-color: lightgray;
+	transition-duration: 5s;
+	opacity: 0.7;
+}
+
+#centro:hover {
+	transition-duration: 5s;
+	opacity: 0.9;
+}
+
+
+
+
+input#tinyull_submit {
+	color: #832c6a;
+	font-weight: bold;
+	box-shadow: 10px 10px 5px #888;
+	padding: 5px 5px 5px 5px;
+}
+
+
+#formulario {
+	margin-top: 200px;
+	text-align: center;
+}
+
+
+#listado {
+	height: 250px; 
+	width: 500px;
+	text-align: center;
+	margin-left: 300px;
+	overflow: auto; 
+	padding: 8px;
+}
+
+h1 {
+	font-size: 13px;
+	Padding-left: 10px;
+}
+
+h2 {
+	font-size: 12px;
+}
+
+
+.pie {
+	font-size: 11px;
+	position: relative;
+	text-align: center;
+	color: lightgray;
+}
+
+span.pie {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.pie>a {
+	text-decoration: none;
+	color: lightgray;
+}
