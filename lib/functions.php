@@ -52,17 +52,21 @@ function getOneItem($mysqli, $shorturl) {
 }
 
 // Add new item to the database
-function addNewItem ($mysqli) {
+function addNewItem ($mysqli, $longurl = NULL) {
     
     $reservedwords = [
         "list",
+        "all",
+        "add",
         "phpmyadmin",
         ];
     
     
     $created_at = date("Y-m-d H:i:s");
     $updated_at = $created_at;
-    $longurl = $_POST['longurl'];
+    if ($longurl == NULL) {
+        $longurl = $_POST['longurl'];
+    }
     $query = "SELECT * FROM tinyulls WHERE longurl LIKE '$longurl'";
     $result = $mysqli->query($query);
     if ($result->num_rows > 0) {

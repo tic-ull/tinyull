@@ -36,6 +36,24 @@
         if ($params[1] == "list" && $params[2] == "all") {
             getAllItems($mysqli);    
         }
+        elseif ($params[1] == "list") {
+            $row = getOneItem($mysqli, $params[2]);
+            showOneItem($row['shorturl'], $row['longurl']);
+        }
+        elseif ($params[1] == "add") {
+            $tmp = $params;
+            unset($tmp[1]);
+            unset($tmp[0]);
+            $tmp = implode('/', $tmp);
+            $allowed_urls = "/^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)/";
+            if (preg_match($allowed_urls, $tmp)) {
+                addNewItem($mysqli, $tmp);
+            } 
+            else {
+                header("Location: ./", true, 301);
+                exit();
+            }
+        }
         else {
             $result = getOneItem($mysqli, $params[1]);
             if ($result['longurl'] != '') {
