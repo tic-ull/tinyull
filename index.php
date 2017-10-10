@@ -48,6 +48,10 @@
             $allowed_urls = "/^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)/";
             if (preg_match($allowed_urls, $tmp)) {
                 addNewItem($mysqli, $tmp);
+                ob_clean();
+                header("Content-Type: text/plain");
+                echo $tmp;
+                exit();
             } 
             else {
                 header("Location: ./", true, 301);

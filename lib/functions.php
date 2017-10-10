@@ -70,7 +70,8 @@ function addNewItem ($mysqli, $longurl = NULL) {
     $query = "SELECT * FROM tinyulls WHERE longurl LIKE '$longurl'";
     $result = $mysqli->query($query);
     if ($result->num_rows > 0) {
-        echo 'Ya existe';
+        $row = $result->fetch_assoc();
+        showOneItem($row['shorturl'], $row['longurl']);
     }
     else {
         $query = "SELECT shorturl FROM tinyulls ORDER BY id DESC LIMIT 1";
