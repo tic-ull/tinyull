@@ -27,12 +27,15 @@ require_once('./lib/connect.php');
 
 // Select all items from the database
 function getAllItems($mysqli) {
-    $sql = "SELECT * FROM tinyulls LIMIT 10";
+    $sql = "SELECT * FROM tinyulls";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
+        echo '<div id="listado" >';
         while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["id"]. " - Short: " . $row["shorturl"]. " " . $row["longurl"]. "<br>";
+        //    echo "id: " . $row["id"]. " - Short: " . $row["shorturl"]. " " . $row["longurl"]. "<br>";
+            echo $row["shorturl"].' -- <a href="'.$row["longurl"].'">' . $row["longurl"] . '</a><br>';
         }
+        echo '</div>';
     }
     $result->free();
     $mysqli->close();

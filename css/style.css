@@ -79,9 +79,9 @@ input#tinyull_submit {
 
 
 #listado {
-	height: 250px; 
+	height: 380px; 
 	width: 500px;
-	text-align: center;
+	text-align: left;
 	margin-left: 300px;
 	overflow: auto; 
 	padding: 8px;
