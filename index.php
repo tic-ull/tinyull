@@ -22,7 +22,7 @@
 
 
     $request = $_SERVER['REQUEST_URI'];
-    $params = split("/", $request);
+    $params = preg_split("/\//", $request);
 
 
     require_once('./lib/connect.php');
