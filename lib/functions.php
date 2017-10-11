@@ -108,7 +108,7 @@ function addNewItemForm ($mysqli) {
                 <input id="tinyull_submit" name="submit" value="Crear enlace corto" type="submit">
             </p>
         </form>
-        <h2>S&oacute;lo URLs de la Universidad de La Laguna</h2>
+        <h2>Sólo URLs de la Universidad de La Laguna</h2>
     </div>
     ';
     
