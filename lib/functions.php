@@ -99,19 +99,26 @@ function addNewItem ($mysqli, $longurl = NULL) {
 // Form to add new item to the database
 function addNewItemForm ($mysqli) {
     echo '
-    <div id="formulario">
+    <div id="class="form-horizontal"">
         <form method="post">
-            <p>  
-                <input id="tinyull_longurl" name="longurl" size="30" type="text" pattern="^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)">
-            </p>
-            <p>
-                <input id="tinyull_submit" name="submit" value="Crear enlace corto" type="submit">
-            </p>
+             <div class="input-group">
+                <input class="form-control" placeholder="Crear nueva URL" id="tinyull_longurl" name="longurl" size="30" type="text" pattern="^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)">
+
+                <div class="input-group-btn">
+                   <button id="tinyull_submit" name="submit"   class="btn btn-default" type="submit"><i class="glyphicon glyphicon-save"></i></button>
+                 <!--  <input id="tinyull_submit" name="submit"  value="Crear enlace corto" type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search">ddd</i></input>-->
+                </div>
+                
+            </div>
+            
+            
+            <br> 
+            <p class="alert alert-danger"><strong>¡Atención!</strong> Sólo URLs de la Universidad de La Laguna</p>
         </form>
-        <h2>Sólo URLs de la Universidad de La Laguna</h2>
     </div>
     ';
     
+
 }
 
 

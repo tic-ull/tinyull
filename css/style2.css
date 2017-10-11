@@ -1,4 +1,4 @@
-<!-- 
+/*
 
 	# Copyright (C) 2017 Eduardo Nacimiento García <enacimie@ull.edu.es>
 	This file is part of TinyULL.
@@ -16,22 +16,24 @@
     You should have received a copy of the GNU General Public License
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 	
--->
+*/
 
 
+.jumbotron {
+    background-color: #7A3B7A;
+    color: #ffffff;
+    text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
 
-<div class="form-group">
-    &nbsp;
-</div>
-<p class="small">
-  <a href="https://osl.ull.es"><img src="/images/OSL.png"/></a>
-    Desarrollado por <a href="http://gitlab.com/mencey">Eduardo Nacimiento</a><br>
-    Licenciado bajo <a href="http://www.gnu.org/licenses/agpl-3.0.html">AGLPv3</a> se puede 
-	<a href="http://gitlab.com/mencey/tinyull2">descargar libremente</a>
-</p>
+.jumbotron a {
+    color: #ffffff;
+}
 
-</div>
+.jumbotron a:hover {
+    text-decoration: none;
+    text-shadow: 2px 2px 1px rgba(100, 150, 150, 1);
 
-</body>
+}
 
-</html>
