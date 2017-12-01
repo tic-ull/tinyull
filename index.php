@@ -79,6 +79,9 @@
             exit();
         }
     }
+    elseif (isset($_POST['masivesubmit'])) {
+        addMultipleItems($mysqli, $_POST['masiveurl']);
+    }
     else {
        addNewItemForm($mysqli);
     }
