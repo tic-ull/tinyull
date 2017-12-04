@@ -25,6 +25,19 @@
 require_once('./lib/connect.php');
 
 
+function get_baseurl () {
+    return "http://t.ull.es/";
+}
+
+
+function get_allowed_urls ($multiple = false) {
+    if ($multiple) {
+        return "/(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*|\?\S*|)/";
+    }
+    return "/^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)/";
+}
+
+
 // Select all items from the database
 function getAllItems($mysqli) {
     $sql = "SELECT * FROM tinyulls";
@@ -32,7 +45,6 @@ function getAllItems($mysqli) {
     if ($result->num_rows > 0) {
         echo '<div id="listado" >';
         while($row = $result->fetch_assoc()) {
-        //    echo "id: " . $row["id"]. " - Short: " . $row["shorturl"]. " " . $row["longurl"]. "<br>";
             echo $row["shorturl"].' -- <a href="'.$row["longurl"].'">' . $row["longurl"] . '</a><br>';
         }
         echo '</div>';
@@ -143,7 +155,7 @@ function addNewItemForm ($mysqli) {
 
 
 function showOneItem($shorturl, $longurl) {
-    $base = "http://t.ull.es/"; 
+    $base = get_baseurl();
     echo ' <div id="formulario">
         <p>
         <b>URL original:</b>
@@ -160,19 +172,24 @@ function showOneItem($shorturl, $longurl) {
 
 function addMultipleItems ($mysqli, $text)  {
 
-    
-    $allowed_urls = "/(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*|\?\S*|)/";
+    $base = get_baseurl();
+    $allowed_urls = get_allowed_urls(true);
+    $text = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $text);
+    $text = strip_tags($text);
     
     preg_match_all($allowed_urls, $text, $matches);
 
     foreach ($matches[0] as $m) {
          if (preg_match($allowed_urls, $m)) {
-             $array_matches['#'.$m.'#'] = 'http://' . addNewItem($mysqli, $m, true);
+             $array_matches['#'.$m.'#'] = $base . addNewItem($mysqli, $m, true);
          }
     }
-    $longs = array_keys($array_matches);
-    $shorts = array_values($array_matches);
-    $text = preg_replace($longs, $shorts, $text);
+    
+    if (!empty($array_matches)) {
+        $longs = array_keys($array_matches);
+        $shorts = array_values($array_matches);
+        $text = preg_replace($longs, $shorts, $text);
+    }
     
     echo '<textarea class="form-control" rows="5" id="tinyull_masiveurl" name="masiveurl" placeholder="Introducir texto con varias URLs incrustadas" >';
     echo $text;
