@@ -45,7 +45,6 @@
             unset($tmp[1]);
             unset($tmp[0]);
             $tmp = implode('/', $tmp);
-            //$allowed_urls = "/^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)/";
             $allowed_urls = get_allowed_urls();
             if (preg_match($allowed_urls, $tmp)) {
                 addNewItem($mysqli, $tmp);
@@ -72,7 +71,6 @@
         }
     }
     elseif (isset($_POST['submit'])) {
-        //$allowed_urls = "/^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)/";
         $allowed_urls = get_allowed_urls();
         if (preg_match($allowed_urls, $_POST['longurl'])) {
             addNewItem($mysqli);
