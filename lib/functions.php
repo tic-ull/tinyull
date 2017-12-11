@@ -25,6 +25,19 @@
 require_once('./lib/connect.php');
 
 
+function get_baseurl () {
+    return "http://t.ull.es/";
+}
+
+
+function get_allowed_urls ($multiple = false) {
+    if ($multiple) {
+        return "/(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*|\?\S*|)/";
+    }
+    return "/^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)/";
+}
+
+
 // Select all items from the database
 function getAllItems($mysqli) {
     $sql = "SELECT * FROM tinyulls";
@@ -32,7 +45,6 @@ function getAllItems($mysqli) {
     if ($result->num_rows > 0) {
         echo '<div id="listado" >';
         while($row = $result->fetch_assoc()) {
-        //    echo "id: " . $row["id"]. " - Short: " . $row["shorturl"]. " " . $row["longurl"]. "<br>";
             echo $row["shorturl"].' -- <a href="'.$row["longurl"].'">' . $row["longurl"] . '</a><br>';
         }
         echo '</div>';
@@ -55,7 +67,7 @@ function getOneItem($mysqli, $shorturl) {
 }
 
 // Add new item to the database
-function addNewItem ($mysqli, $longurl = NULL) {
+function addNewItem ($mysqli, $longurl = NULL, $multiple = false) {
     
     $reservedwords = [
         "list",
@@ -74,7 +86,10 @@ function addNewItem ($mysqli, $longurl = NULL) {
     $result = $mysqli->query($query);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        showOneItem($row['shorturl'], $row['longurl']);
+        if (!$multiple) {
+            showOneItem($row['shorturl'], $row['longurl']);
+        }
+        $shorturl = $row['shorturl'];
     }
     else {
         $query = "SELECT shorturl FROM tinyulls ORDER BY id DESC LIMIT 1";
@@ -87,35 +102,52 @@ function addNewItem ($mysqli, $longurl = NULL) {
                 ++$shorturl;
             }
             $query = "INSERT INTO tinyulls (shorturl, longurl, created_at, updated_at) VALUES ('$shorturl', '$longurl', '$created_at', '$updated_at')";
-            showOneItem($shorturl, $longurl);
+            if (!$multiple) {
+                showOneItem($shorturl, $longurl);
+            }
             $mysqli->query($query);
          }
     }
-    $mysqli->close();
-
+    //$mysqli->close();
+    if ($multiple) {
+        return $shorturl;
+    }
 }
 
 
 // Form to add new item to the database
 function addNewItemForm ($mysqli) {
     echo '
-    <div id="class="form-horizontal"">
-        <form method="post">
-             <div class="input-group">
-                <input class="form-control" placeholder="Crear nueva URL" id="tinyull_longurl" name="longurl" size="30" type="text" pattern="^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)">
-
-                <div class="input-group-btn">
-                   <button id="tinyull_submit" name="submit"   class="btn btn-default" type="submit"><i class="glyphicon glyphicon-save"></i></button>
-                 <!--  <input id="tinyull_submit" name="submit"  value="Crear enlace corto" type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search">ddd</i></input>-->
+    <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#normal">Modo normal</a></li>
+    <li><a data-toggle="tab" href="#masive">Modo masivo</a></li>
+    </ul>
+    <div class="tab-content">
+    <div id="normal" class="tab-pane fade in active">
+        <div id="class="form-horizontal"">
+            <form method="post">
+                 <div class="input-group">
+                    <input class="form-control" placeholder="Crear nueva URL" id="tinyull_longurl" name="longurl" size="30" type="text" pattern="^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)">
+                    <div class="input-group-btn">
+                       <button id="tinyull_submit" name="submit"   class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-save"></i></button>
+                    </div>
                 </div>
-                
-            </div>
-            
-            
-            <br> 
-            <p class="alert alert-danger"><strong>¡Atención!</strong> Sólo URLs de la Universidad de La Laguna</p>
-        </form>
+            </form>
+        </div>
     </div>
+    <div id="masive" class="tab-pane fade">
+         <div id="class="form-horizontal"">
+            <form method="post">
+                 <div class="">
+                    <textarea class="form-control" rows="5" id="tinyull_masiveurl" name="masiveurl" placeholder="Introducir texto con varias URLs incrustadas" ></textarea>
+                </div>
+                 <button id="tinyull_masivesubmit" name="masivesubmit" type="submit" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-cloud-download"></i> Generar enlaces masivos</button> 
+            </form>
+        </div>
+    </div>
+    <br> 
+    <p class="alert alert-danger"><strong>¡Atención!</strong> Sólo URLs de la Universidad de La Laguna</p>
+    </div> 
     ';
     
 
@@ -123,7 +155,7 @@ function addNewItemForm ($mysqli) {
 
 
 function showOneItem($shorturl, $longurl) {
-    $base = "http://t.ull.es/"; 
+    $base = get_baseurl();
     echo ' <div id="formulario">
         <p>
         <b>URL original:</b>
@@ -138,6 +170,30 @@ function showOneItem($shorturl, $longurl) {
 }
 
 
+function addMultipleItems ($mysqli, $text)  {
 
+    $base = get_baseurl();
+    $allowed_urls = get_allowed_urls(true);
+    $text = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $text);
+    $text = strip_tags($text);
+    
+    preg_match_all($allowed_urls, $text, $matches);
+
+    foreach ($matches[0] as $m) {
+         if (preg_match($allowed_urls, $m)) {
+             $array_matches['#'.$m.'#'] = $base . addNewItem($mysqli, $m, true);
+         }
+    }
+    
+    if (!empty($array_matches)) {
+        $longs = array_keys($array_matches);
+        $shorts = array_values($array_matches);
+        $text = preg_replace($longs, $shorts, $text);
+    }
+    
+    echo '<textarea class="form-control" rows="5" id="tinyull_masiveurl" name="masiveurl" placeholder="Introducir texto con varias URLs incrustadas" >';
+    echo $text;
+    echo '</textarea>';
+}
 
 ?>
