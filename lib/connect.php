@@ -25,8 +25,8 @@
     $database = [
         "host" => "127.0.0.1",
         "db" => "tinyull",
-        "user" => "mencey",
-        "pass" => "",
+        "user" => "root",
+        "pass" => "oslMysql17",
         ];
         
 

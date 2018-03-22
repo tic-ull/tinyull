@@ -26,7 +26,7 @@ require_once('./lib/connect.php');
 
 
 function get_baseurl () {
-    return "http://t.ull.es/";
+    return "https://t.ull.es/";
 }
 
 
@@ -163,7 +163,7 @@ function showOneItem($shorturl, $longurl) {
         </p>
         <p>
         <b>URL corta:</b>
-        <input type="text"  value="'.$base.$shorturl.'"/>
+        <input type="text" readonly value="'.$base.$shorturl.'"/>
         </p>
         <p><a href="'.$base.'">Crear otra URL</a></p>
         </div>';
