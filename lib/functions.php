@@ -157,14 +157,22 @@ function addNewItemForm ($mysqli) {
 function showOneItem($shorturl, $longurl) {
     $base = get_baseurl();
     echo ' <div id="formulario">
-        <p>
-        <b>URL original:</b>
-        <a href="'.$longurl.'">'.$longurl.'</a>
-        </p>
-        <p>
-        <b>URL corta:</b>
-        <input type="text" readonly value="'.$base.$shorturl.'"/>
-        </p>
+
+	<div class="row">
+		<div class="col-4">URL original</div>
+		<div class="col-6"><a href="'.$longurl.'">'.$longurl.'</a></div>
+		<div class="col-2"><button type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-paperclip"></span> Copiar
+    </button></div>
+	</div>
+	<div class="row">
+		<div class="col-4">URL corta</div>
+		<div class="col-6"><input type="text" readonly value="'.$base.$shorturl.'"/></div>
+		<div class="col-2"><button type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-paperclip"></span> Copiar
+    </button></div>
+	</div>
+
         <p><a href="'.$base.'">Crear otra URL</a></p>
         </div>';
 }
