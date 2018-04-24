@@ -129,7 +129,7 @@ function addNewItemForm ($mysqli) {
                  <div class="input-group">
                     <input class="form-control" placeholder="Crear nueva URL" id="tinyull_longurl" name="longurl" size="30" type="text" pattern="^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)">
                     <div class="input-group-btn">
-                       <button id="tinyull_submit" name="submit"   class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-save"></i></button>
+                       <button id="tinyull_submit" name="submit"   class="btn btn-primary" type="submit"><i class=con glyphicon-cog""></i></button>
                     </div>
                 </div>
             </form>
@@ -167,7 +167,7 @@ function showOneItem($shorturl, $longurl) {
 		<div class="col-sm-4"><strong>URL corta</strong></div>
 		<div class="col-sm-6"><input type="text" readonly class="form-control" value="'.$base.$shorturl.'" id="shorturlinput"/></div>
 		<div class="col-sm-2 text-right"><button type="button" class="btn btn-default data-clipboard-target="#shorturlinput"">
-      <span class="glyphicon glyphicon-paperclip"></span> Copiar
+      <span class="glyphicon glyphicon-copy"></span> Copiar
     </button></div>
 	</div>
 
