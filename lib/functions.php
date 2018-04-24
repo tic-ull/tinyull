@@ -166,7 +166,7 @@ function showOneItem($shorturl, $longurl) {
 	<div class="row text-left">
 		<div class="col-sm-4"><strong>URL corta</strong></div>
 		<div class="col-sm-6"><input type="text" readonly class="form-control" value="'.$base.$shorturl.'" id="shorturlinput"/></div>
-		<div class="col-sm-2 text-right"><button type="button" class="btn btn-default" data-clipboard-target="#shorturlinput" id="copybutton">
+		<div class="col-sm-2 text-right"><button type="button" class="btn btn-primary" data-clipboard-target="#shorturlinput" id="copybutton">
       <span class="glyphicon glyphicon-copy"></span> Copiar
     </button></div>
 	</div>
@@ -200,7 +200,7 @@ function addMultipleItems ($mysqli, $text)  {
     echo $text;
     echo '</textarea>';
 	
-    echo '<button type="button" class="btn btn-default btn-block" data-clipboard-target="#tinyull_masiveurl" id="copybutton"><span class="glyphicon glyphicon-copy"></span> Copiar</button>';
+    echo '<button type="button" class="btn btn-primary btn-block" data-clipboard-target="#tinyull_masiveurl" id="copybutton"><span class="glyphicon glyphicon-copy"></span> Copiar</button>';
 }
 
 ?>
