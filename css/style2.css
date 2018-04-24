@@ -1,0 +1,39 @@
+/*
+
+	# Copyright (C) 2017 Eduardo Nacimiento García <enacimie@ull.edu.es>
+	This file is part of TinyULL.
+
+    TinyULL is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    TinyULL is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+	
+*/
+
+
+.jumbotron {
+    background-color: #7A3B7A;
+    color: #ffffff;
+    text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.jumbotron a {
+    color: #ffffff;
+}
+
+.jumbotron a:hover {
+    text-decoration: none;
+    text-shadow: 2px 2px 1px rgba(100, 150, 150, 1);
+
+}
+
