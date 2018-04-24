@@ -159,16 +159,14 @@ function showOneItem($shorturl, $longurl) {
     echo ' <div id="formulario">
 
 	<div class="row">
-		<div class="col-4">URL original</div>
-		<div class="col-6"><a href="'.$longurl.'">'.$longurl.'</a></div>
-		<div class="col-2"><button type="button" class="btn btn-default">
-      <span class="glyphicon glyphicon-paperclip"></span> Copiar
-    </button></div>
+		<div class="col-xs-4"><strong>URL original</strong></div>
+		<div class="col-xs-8"><a href="'.$longurl.'">'.$longurl.'</a></div>
 	</div>
+	<hr>
 	<div class="row">
-		<div class="col-4">URL corta</div>
-		<div class="col-6"><input type="text" readonly value="'.$base.$shorturl.'"/></div>
-		<div class="col-2"><button type="button" class="btn btn-default">
+		<div class="col-sm-4"><strong>URL corta</strong></div>
+		<div class="col-sm-6"><input type="text" readonly value="'.$base.$shorturl.'"/></div>
+		<div class="col-sm-2"><button type="button" class="btn btn-default">
       <span class="glyphicon glyphicon-paperclip"></span> Copiar
     </button></div>
 	</div>
