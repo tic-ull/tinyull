@@ -129,7 +129,7 @@ function addNewItemForm ($mysqli) {
                  <div class="input-group">
                     <input class="form-control" placeholder="Crear nueva URL" id="tinyull_longurl" name="longurl" size="30" type="text" pattern="^(http:\/\/|https:\/\/|\w*[^:]\w)[^&\?\/]+\.ull\.es(\/\S*$|\?\S*$|$)">
                     <div class="input-group-btn">
-                       <button id="tinyull_submit" name="submit"   class="btn btn-primary" type="submit"><i class=con glyphicon-cog""></i></button>
+                       <button id="tinyull_submit" name="submit"   class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-play-circle"></i></button>
                     </div>
                 </div>
             </form>
@@ -171,7 +171,6 @@ function showOneItem($shorturl, $longurl) {
     </button></div>
 	</div>
 
-        <p><a href="'.$base.'">Crear otra URL</a></p>
         </div>';
 }
 
@@ -200,6 +199,8 @@ function addMultipleItems ($mysqli, $text)  {
     echo '<textarea class="form-control" rows="5" id="tinyull_masiveurl" name="masiveurl" placeholder="Introducir texto con varias URLs incrustadas" >';
     echo $text;
     echo '</textarea>';
+	
+    echo '<button type="button" class="btn btn-default btn-block" data-clipboard-target="#tinyull_masiveurl" id="copybutton">';
 }
 
 ?>
