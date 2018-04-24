@@ -158,15 +158,15 @@ function showOneItem($shorturl, $longurl) {
     $base = get_baseurl();
     echo ' <div id="formulario">
 
-	<div class="row">
+	<div class="row text-left">
 		<div class="col-xs-4"><strong>URL original</strong></div>
 		<div class="col-xs-8"><a href="'.$longurl.'">'.$longurl.'</a></div>
 	</div>
 	<hr>
-	<div class="row">
+	<div class="row text-left">
 		<div class="col-sm-4"><strong>URL corta</strong></div>
-		<div class="col-sm-6"><input type="text" readonly value="'.$base.$shorturl.'"/></div>
-		<div class="col-sm-2"><button type="button" class="btn btn-default">
+		<div class="col-sm-6"><input type="text" readonly class="form-control" value="'.$base.$shorturl.'" id="shorturlinput"/></div>
+		<div class="col-sm-2 text-right"><button type="button" class="btn btn-default data-clipboard-target="#shorturlinput"">
       <span class="glyphicon glyphicon-paperclip"></span> Copiar
     </button></div>
 	</div>
