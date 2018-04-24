@@ -200,7 +200,7 @@ function addMultipleItems ($mysqli, $text)  {
     echo $text;
     echo '</textarea>';
 	
-    echo '<button type="button" class="btn btn-default btn-block" data-clipboard-target="#tinyull_masiveurl" id="copybutton">';
+    echo '<button type="button" class="btn btn-default btn-block" data-clipboard-target="#tinyull_masiveurl" id="copybutton"></button>';
 }
 
 ?>
