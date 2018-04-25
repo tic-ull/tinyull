@@ -25,6 +25,7 @@
     text-shadow: 2px 2px 1px rgba(150, 150, 150, 1);
     padding-top: 2%;
     padding-bottom: 2%;
+    min-height; 140px;
 }
 
 .jumbotron a {
