@@ -37,3 +37,6 @@
 
 }
 
+.jumbotron img {
+    max-height: 70px;
+}
