@@ -22,6 +22,7 @@
 
 
     $request = $_SERVER['REQUEST_URI'];
+    $request = strstr($request, '?', true);
     $params = preg_split("/\//", $request);
 
 
